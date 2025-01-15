@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>MGEN AI</title>
+</head>
+<body>
+    <div id="nav">
+        <div id="name">MGEN AI</div>
+        <div id="anchor_panel">
+            <a href="https://docs.google.com/document/d/18H18vgnADho8qi9p2vq-BfCWJZvpPl-JmMqdory1IWw/edit?usp=sharing" class="links">Docs</a>
+            <a href="https://github.com/rishi-gowda-007" class="links">GitHub</a>
+            <a href="https://www.linkedin.com/in/rishi-s-gowda-a2748a276?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="links">LinkedIn</a>
+        </div>
+    </div>
+    <div id="main">
+        <div id="result">
+            {% if  output %} 
+            <h2>Response :</h2>
+            <pre><div id="response">{{output|safe}}</div></pre>
+            {% else %} 
+                <pre><b>Welcome to MGEN AI  </b>|  Feel free to ask anything</pre>
+            {% endif %}
+        </div>
+        <div id="prompt">
+            <form method="POST" action="/" id="form_prompt">
+                <input type="text" id="prompt_input" name="input" placeholder="Ask Anything" required/>
+                <button type="submit" id="submit">➤</button>
+            </form>
+        </div>
+    </div>
+    <div id="foot">
+            <p>&copy; 2025 MGEN AI. All rights reserved.</p>
+            <pre><a href="#" class="flink">Privacy Policy</a> | <a href="#" class="flink">Terms of Service</a></pre>
+    </div>
+</body>
+</html>
