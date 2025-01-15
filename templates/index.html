@@ -19,11 +19,32 @@
         <div id="result">
             {% if  output %} 
             <h2>Response :</h2>
-            <pre><div id="response">{{output|safe}}</div></pre>
+            <div id="response">{{output|safe}}</div>
             {% else %} 
                 <pre><b>Welcome to MGEN AI  </b>|  Feel free to ask anything</pre>
             {% endif %}
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var response = document.getElementById('response');
+                if (response) {
+                    var text = response.innerHTML.trim();
+                    var words = text.split(/\s+/); 
+                    response.innerHTML = ''; 
+                    var index = 0;
+        
+                    function displayWord() {
+                        if (index < words.length) {
+                            response.innerHTML += '<span>' + words[index] + ' </span>';
+                            index++;
+                            setTimeout(displayWord, 50); 
+                        }
+                    }
+        
+                    displayWord(); 
+                }
+            });
+        </script>
         <div id="prompt">
             <form method="POST" action="/" id="form_prompt">
                 <input type="text" id="prompt_input" name="input" placeholder="Ask Anything" required/>
@@ -33,7 +54,7 @@
     </div>
     <div id="foot">
             <p>&copy; 2025 MGEN AI. All rights reserved.</p>
-            <pre><a href="#" class="flink">Privacy Policy</a> | <a href="#" class="flink">Terms of Service</a></pre>
+            <pre><a href="/" class="flink">Privacy Policy</a> | <a href="/" class="flink">Terms of Service</a></pre>
     </div>
 </body>
 </html>

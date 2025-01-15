@@ -10,8 +10,7 @@ if not SECRET_KEY:
     raise EnvironmentError("SECRET_KEY environment variable is not set!")
 
 from langchain_huggingface import HuggingFaceEndpoint
-os.environ["HF_API_TOKEN"]=SECRET_KEY
-repo_id="mistralai/Mistral-7B-Instruct-v0.3"
+repo_id= os.getenv('repo_id')
 llm=HuggingFaceEndpoint(repo_id=repo_id,max_length=128,temperature=0.7,token=SECRET_KEY)
 
 @app.route("/", methods=["POST", "GET"])
@@ -24,7 +23,7 @@ def home():
             response = response.replace('\n', '<br/>')
             response = response.lstrip('?')
             output=response
-            print(f"Output: {output}")  
+            # print(f"Output: {output}")  
 
     return render_template("index.html", output=output)
 
