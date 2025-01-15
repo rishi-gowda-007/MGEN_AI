@@ -4,10 +4,7 @@ import os
 
 app = Flask(__name__)
 
-load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
-if not SECRET_KEY:
-    raise EnvironmentError("SECRET_KEY environment variable is not set!")
+SECRET_KEY = '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'
 
 from langchain_huggingface import HuggingFaceEndpoint
 os.environ["HF_API_TOKEN"]=SECRET_KEY
