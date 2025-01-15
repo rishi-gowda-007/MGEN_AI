@@ -5,3 +5,4 @@ env.bak/
 venv.bak/
 # Vercel specific
 .vercel
+.env
